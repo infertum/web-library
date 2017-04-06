@@ -23,6 +23,6 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(port, ()=>{
+app.listen(port, (err)=>{
     console.log('Application started on port: ' + port);
 });
