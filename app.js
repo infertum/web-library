@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(express.static('src/views'));
 
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res)=>{
     res.send('Hello world!');
 });
 
