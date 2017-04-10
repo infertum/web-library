@@ -1,28 +1,33 @@
-//import modules
 var express = require('express');
 
-//create express app
 var app = express();
-var port = 5000;
 
-//Define static content
+
+var port = process.env.port ;
+
+
 app.use(express.static('public'));
-app.use(express.static('src/views'));
 
 
-app.get('/', (req, res)=>{
-    res.send('Hello world!');
+app.set('views', './src/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res) {
+    res.render('index', {
+        nav: [
+            {
+                Link: '/books',
+                Text: 'Books'
+            }, 
+            {
+                Link: '/authors',
+                Text: 'authors'
+            }
+            ]}
+    );
 });
 
 
-
-
-
-
-
-
-
-
-app.listen(port, (err)=>{
+app.listen(port, function() {
     console.log('Application started on port: ' + port);
 });
