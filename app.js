@@ -4,13 +4,13 @@ var app = express();
 var port = process.env.port ;
 var books = [
     {
-        'title:': 'Book1',
+        'title': 'Book1',
         'genre': 'Ganre1',
         'author': 'Author1',
         'read': true
     },
     {
-        'title:': 'Book2',
+        'title': 'Book2',
         'genre': 'Ganre2',
         'author': 'Author2',
         'read': false
@@ -35,7 +35,9 @@ bookRouter.route('/')
                 Link: '/authors',
                 Text: 'authors'
             }
-            ]});
+            ],
+        books: books
+        });
     });
 
 bookRouter.route('/single')
