@@ -1,8 +1,20 @@
 var express = require('express');
 
+var nav = [{
+                Link: '/books',
+                Text: 'Books'
+            }, 
+            {
+                Link: '/authors',
+                Text: 'authors'
+            }
+            ];
+
 var app = express();
-var bookRouter = require('./src/routes/bookRoutes');
+var bookRouter = require('./src/routes/bookRoutes')(nav);
 var port = process.env.port || 3000 ;
+
+
 
 app.use(express.static('public'));
 app.use('/books',bookRouter);
@@ -14,16 +26,8 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
     res.render('index', {
         title: 'My web library',
-        nav: [
-            {
-                Link: '/books',
-                Text: 'Books'
-            }, 
-            {
-                Link: '/authors',
-                Text: 'authors'
-            }
-            ]}
+        nav: nav
+        }
     );
 });
 
